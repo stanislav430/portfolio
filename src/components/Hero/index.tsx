@@ -153,7 +153,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} id="hero">
       <div className={styles.hero_left}>
         <motion.div
           variants={mainContainerVariants}

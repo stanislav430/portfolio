@@ -6,6 +6,7 @@ import Providers from "@/providers/Providers";
 import Navbar from "@/components/navbar/Navbar";
 import Links from "@/components/layout/Links";
 import Cursor from "@/components/layout/Cursor";
+import Footer from "@/components/Footer";
 
 const quicksand = Quicksand({ subsets: ["latin"] });
 
@@ -38,6 +39,7 @@ export default function RootLayout({
             <Links />
             <Cursor />
             {children}
+            <Footer />
           </Providers>
         </main>
       </body>
