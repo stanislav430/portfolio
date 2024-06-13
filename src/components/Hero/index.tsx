@@ -2,10 +2,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
+import { Link } from "react-scroll";
 import { heroData } from "@/db/main";
 import styles from "@/styles/components/Hero.module.scss";
 import UI from "@/styles/components/UI.module.scss";
 import Image from "next/image";
+import { useRecoilValue } from "recoil";
+import useSound from "use-sound";
+import { soundState } from "@/atoms/SoundAtom";
 
 const aniTime = 2;
 const delayTime = 1.5;
@@ -139,6 +143,15 @@ const scrollVariants = {
 };
 
 const Hero: React.FC = () => {
+  const { soundActive } = useRecoilValue(soundState);
+  const [playClick] = useSound("/sounds/box-click.wav", { volume: 0.5 });
+
+  const handleClickScrollDown = () => {
+    if (soundActive) {
+      playClick();
+    }
+  };
+
   return (
     <section className={styles.hero}>
       <div className={styles.hero_left}>
@@ -234,22 +247,25 @@ const Hero: React.FC = () => {
         initial="hidden"
         animate="visible"
         className={styles.hero_scroll}
+        onClick={handleClickScrollDown}
       >
-        <Icon
-          className={styles.hero_scroll_mouse}
-          icon="iconamoon:mouse-thin"
-        />
-        <motion.div
-          variants={arrowVariants}
-          initial="start"
-          animate="end"
-          className={styles.hero_scroll_arrow}
-        >
+        <Link to="about" smooth={true} duration={600} offset={400}>
           <Icon
-            className={styles.hero_scroll_arrow_svg}
-            icon="ph:caret-double-down-thin"
+            className={styles.hero_scroll_mouse}
+            icon="iconamoon:mouse-thin"
           />
-        </motion.div>
+          <motion.div
+            variants={arrowVariants}
+            initial="start"
+            animate="end"
+            className={styles.hero_scroll_arrow}
+          >
+            <Icon
+              className={styles.hero_scroll_arrow_svg}
+              icon="ph:caret-double-down-thin"
+            />
+          </motion.div>
+        </Link>
       </motion.div>
     </section>
   );

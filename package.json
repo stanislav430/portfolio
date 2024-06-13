@@ -15,6 +15,7 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-scroll": "^1.9.0",
     "recoil": "^0.7.7",
     "use-sound": "^4.0.1"
   },
@@ -23,6 +24,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-scroll": "^1.8.10",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "sass": "^1.77.5",

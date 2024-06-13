@@ -3,12 +3,14 @@
 import React, { useEffect } from "react";
 import { Variants, motion } from "framer-motion";
 import { Icon } from "@iconify/react";
+import { Link } from "react-scroll";
+import { navState } from "@/atoms/NavAtom";
 import styles from "@/styles/components/Navbar.module.scss";
 import ThemeToggler from "./ThemeToggler";
+import { useRecoilState } from "recoil";
 
 type RightProps = {
   mobile: boolean;
-  toggle: boolean;
 };
 
 const listVariants: Variants = {
@@ -35,10 +37,12 @@ const itemVariants: Variants = {
   },
 };
 
-const Right: React.FC<RightProps> = ({ mobile, toggle }) => {
+const Right: React.FC<RightProps> = ({ mobile }) => {
+  const [navStateValue, setNavState] = useRecoilState(navState);
+
   //stop scrolling
   useEffect(() => {
-    if (toggle) {
+    if (navStateValue.open) {
       window.scrollTo(0, 0);
       document.body.style.overflowY = "hidden";
       document.documentElement.style.overflowY = "hidden";
@@ -46,44 +50,84 @@ const Right: React.FC<RightProps> = ({ mobile, toggle }) => {
       document.body.style.overflowY = "visible";
       document.documentElement.style.overflowY = "visible";
     }
-  }, [toggle]);
+  }, [navStateValue.open]);
 
   return (
     <>
       <motion.ul
         variants={listVariants}
-        animate={toggle ? "animate" : "initial"}
+        animate={!navStateValue.open && mobile ? "initial" : "animate"}
         className={styles.navbar_right_list}
       >
         <motion.li
           variants={itemVariants}
           className={styles.navbar_right_list_item}
         >
-          About
+          <Link
+            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            to="about"
+            smooth={true}
+            duration={600}
+            offset={50}
+          >
+            About
+          </Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
           className={styles.navbar_right_list_item}
         >
-          Skills
+          <Link
+            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            to="skills"
+            smooth={true}
+            duration={600}
+            offset={50}
+          >
+            Skills
+          </Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
           className={styles.navbar_right_list_item}
         >
-          Projects
+          <Link
+            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            to="projects"
+            smooth={true}
+            duration={600}
+            offset={50}
+          >
+            Projects
+          </Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
           className={styles.navbar_right_list_item}
         >
-          Contact
+          <Link
+            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            to="link"
+            smooth={true}
+            duration={600}
+            offset={50}
+          >
+            Contact
+          </Link>
         </motion.li>
         <motion.li
           variants={itemVariants}
           className={styles.navbar_right_list_item}
         >
-          Resume
+          <Link
+            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            to="link"
+            smooth={true}
+            duration={600}
+            offset={50}
+          >
+            Resume
+          </Link>
         </motion.li>
         <motion.li
           variants={itemVariants}

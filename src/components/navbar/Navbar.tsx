@@ -3,7 +3,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "@/styles/components/Navbar.module.scss";
+import { navState } from "@/atoms/NavAtom";
 import Right from "./Right";
+import { useRecoilState } from "recoil";
 
 const animationDuration = 1.5;
 const circleVariants = {
@@ -65,7 +67,8 @@ const Navbar: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [mobile, setMobile] = useState<boolean>(false);
-  const [toggleNavbar, setToggleNavbar] = useState<boolean>(false);
+  // const [toggleNavbar, setToggleNavbar] = useState(false);
+  const [navStateValue, setNavState] = useRecoilState(navState);
 
   useEffect(() => {
     //initial check
@@ -130,25 +133,25 @@ const Navbar: React.FC = () => {
         </div>
         <div
           className={`${styles.navbar_right} ${
-            toggleNavbar ? styles.navbar_right_active : ""
+            navStateValue.open ? styles.navbar_right_active : ""
           }`}
         >
-          <Right toggle={toggleNavbar} mobile={mobile} />
+          <Right mobile={mobile} />
         </div>
         <div
-          onClick={() => setToggleNavbar((prev) => !prev)}
+          onClick={() => setNavState((prev) => ({ ...prev, open: !prev.open }))}
           className={`${styles.navbar_toggle} ${
-            toggleNavbar ? styles.navbar_toggle_active : ""
+            navStateValue.open ? styles.navbar_toggle_active : ""
           }`}
         >
           <div
             className={`${styles.navbar_toggle_up} ${
-              toggleNavbar ? styles.navbar_toggle_active_up : ""
+              navStateValue.open ? styles.navbar_toggle_active_up : ""
             }`}
           ></div>
           <div
             className={`${styles.navbar_toggle_down} ${
-              toggleNavbar ? styles.navbar_toggle_active_down : ""
+              navStateValue.open ? styles.navbar_toggle_active_down : ""
             }`}
           ></div>
         </div>
