@@ -60,6 +60,7 @@ const Links: React.FC = () => {
         className={styles.links_link}
         href="mailto:danyliukstas1@gmail.com"
         target="_blank"
+        aria-label="email"
       >
         <Icon className={styles.links_link_icon} icon="mi:email" />
       </motion.a>
@@ -68,6 +69,7 @@ const Links: React.FC = () => {
         className={styles.links_link}
         href="https://www.linkedin.com/in/stanislav-danyliuk-stas/"
         target="_blank"
+        aria-label="linkedin"
       >
         <Icon className={styles.links_link_icon} icon="mdi:linkedin" />
       </motion.a>
@@ -76,6 +78,7 @@ const Links: React.FC = () => {
         className={styles.links_link}
         href="https://github.com/stanislav430"
         target="_blank"
+        aria-label="github"
       >
         <Icon className={styles.links_link_icon} icon="mdi:github" />
       </motion.a>
