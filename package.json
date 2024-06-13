@@ -15,7 +15,8 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "recoil": "^0.7.7"
+    "recoil": "^0.7.7",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
