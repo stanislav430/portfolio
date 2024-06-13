@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
       variants={containerVariants}
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: true, amount: 0.3 }}
       className={styles.contact}
       id="contact"
     >
