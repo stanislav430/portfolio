@@ -84,6 +84,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           <Link
             onClick={handleClickLink}
             to="about"
+            href="about"
             smooth={true}
             duration={600}
             offset={50}
@@ -99,6 +100,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           <Link
             onClick={handleClickLink}
             to="skills"
+            href="skills"
             smooth={true}
             duration={600}
             offset={50}
@@ -114,6 +116,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           <Link
             onClick={handleClickLink}
             to="projects"
+            href="projects"
             smooth={true}
             duration={600}
             offset={50}
@@ -129,6 +132,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           <Link
             onClick={handleClickLink}
             to="contact"
+            href="contact"
             smooth={true}
             duration={600}
             offset={50}
@@ -144,6 +148,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           <Link
             onClick={handleClickLink}
             to="link"
+            href="resume"
             smooth={true}
             duration={600}
             offset={50}

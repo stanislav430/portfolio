@@ -192,6 +192,7 @@ const Hero: React.FC = () => {
             </motion.span>
           </div>
           <motion.a
+            href="#"
             aria-label="resume"
             variants={textChildrenVariants}
             whileHover={{
@@ -257,7 +258,8 @@ const Hero: React.FC = () => {
           smooth={true}
           duration={600}
           offset={10}
-          aria-label="hero"
+          aria-label="about"
+          href="about"
         >
           <Icon
             className={styles.hero_scroll_mouse}
