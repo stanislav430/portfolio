@@ -42,7 +42,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
 
   //stop scrolling
   useEffect(() => {
-    if (navStateValue.open) {
+    if (navStateValue.open && mobile) {
       window.scrollTo(0, 0);
       document.body.style.overflowY = "hidden";
       document.documentElement.style.overflowY = "hidden";
@@ -50,7 +50,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
       document.body.style.overflowY = "visible";
       document.documentElement.style.overflowY = "visible";
     }
-  }, [navStateValue.open]);
+  }, [navStateValue.open, mobile]);
 
   return (
     <>
