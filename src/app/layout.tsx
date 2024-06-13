@@ -3,7 +3,7 @@ import { Quicksand } from "next/font/google";
 import "@/styles/globals.scss";
 import styles from "@/styles/layout/MainLayout.module.scss";
 import Providers from "@/providers/Providers";
-import Navbar from "@/components/navbar/desktop/Navbar";
+import Navbar from "@/components/navbar/Navbar";
 import Links from "@/components/layout/Links";
 import Cursor from "@/components/layout/Cursor";
 

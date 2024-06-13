@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "@/styles/components/Navbar.module.scss";
 import Right from "./Right";
@@ -63,6 +63,31 @@ const clipVariants = {
 
 const Navbar: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [mobile, setMobile] = useState<boolean>(false);
+  const [toggleNavbar, setToggleNavbar] = useState<boolean>(false);
+
+  useEffect(() => {
+    //initial check
+    if (window.innerWidth <= 800) {
+      setMobile(true);
+    } else {
+      setMobile(false);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [mobile]);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+    if (window.innerWidth <= 800) {
+      setMobile(true);
+    } else {
+      setMobile(false);
+    }
+  };
 
   const handleAnimationComplete = () => {
     if (!containerRef.current) return;
@@ -103,8 +128,29 @@ const Navbar: React.FC = () => {
         <div className={styles.navbar_left}>
           <h1 className={styles.navbar_left_logo}>Stanislav Danyliuk</h1>
         </div>
-        <div className={styles.navbar_right}>
-          <Right />
+        <div
+          className={`${styles.navbar_right} ${
+            toggleNavbar ? styles.navbar_right_active : ""
+          }`}
+        >
+          <Right toggle={toggleNavbar} mobile={mobile} />
+        </div>
+        <div
+          onClick={() => setToggleNavbar((prev) => !prev)}
+          className={`${styles.navbar_toggle} ${
+            toggleNavbar ? styles.navbar_toggle_active : ""
+          }`}
+        >
+          <div
+            className={`${styles.navbar_toggle_up} ${
+              toggleNavbar ? styles.navbar_toggle_active_up : ""
+            }`}
+          ></div>
+          <div
+            className={`${styles.navbar_toggle_down} ${
+              toggleNavbar ? styles.navbar_toggle_active_down : ""
+            }`}
+          ></div>
         </div>
       </motion.div>
     </nav>

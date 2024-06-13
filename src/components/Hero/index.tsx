@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import { heroData } from "@/db/main";
 import styles from "@/styles/components/Hero.module.scss";
 import UI from "@/styles/components/UI.module.scss";
+import Image from "next/image";
 
 const aniTime = 2;
 const delayTime = 1.5;
@@ -210,10 +211,15 @@ const Hero: React.FC = () => {
             variants={imgContainerVariants}
             className={styles.hero_right_container_imgContainer}
           >
-            <motion.img
+            {/* <motion.img
               variants={imageVariants}
               className={styles.hero_right_container_imgContainer_image}
               src={heroData.img.src}
+              alt="Stanislav Danyliuk"
+            /> */}
+            <Image
+              className={styles.hero_right_container_imgContainer_image}
+              src={heroData.img}
               alt="Stanislav Danyliuk"
             />
           </motion.div>
