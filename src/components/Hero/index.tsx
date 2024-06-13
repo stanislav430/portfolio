@@ -146,7 +146,7 @@ const Hero: React.FC = () => {
   const { soundActive } = useRecoilValue(soundState);
   const [playClick] = useSound("/sounds/box-click.wav", { volume: 0.5 });
 
-  const handleClickScrollDown = () => {
+  const handlePlay = () => {
     if (soundActive) {
       playClick();
     }
@@ -192,12 +192,14 @@ const Hero: React.FC = () => {
             </motion.span>
           </div>
           <motion.a
+            aria-label="resume"
             variants={textChildrenVariants}
             whileHover={{
               boxShadow: "0.7rem 0.7rem 0px var(--secondary)",
               transform: "translate(-0.7rem, -0.7rem)",
             }}
             className={styles.hero_left_container_btn}
+            onClick={handlePlay}
           >
             {heroData.btnText}
           </motion.a>
@@ -250,11 +252,12 @@ const Hero: React.FC = () => {
         className={styles.hero_scroll}
       >
         <Link
-          onClick={handleClickScrollDown}
+          onClick={handlePlay}
           to="about"
           smooth={true}
           duration={600}
           offset={10}
+          aria-label="hero"
         >
           <Icon
             className={styles.hero_scroll_mouse}
