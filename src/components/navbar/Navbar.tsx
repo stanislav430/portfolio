@@ -140,7 +140,13 @@ const Navbar: React.FC = () => {
         onAnimationComplete={handleAnimationComplete}
       >
         <div className={styles.navbar_left}>
-          <h1 className={styles.navbar_left_logo}>Stanislav Danyliuk</h1>
+          <h1
+            className={`${styles.navbar_left_logo} ${
+              navStateValue.open ? styles.navbar_left_logo_active : ""
+            }`}
+          >
+            Stanislav Danyliuk
+          </h1>
         </div>
         <div
           className={`${styles.navbar_right} ${

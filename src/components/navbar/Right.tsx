@@ -46,15 +46,18 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
 
   //stop scrolling
   useEffect(() => {
-    if (navStateValue.open && mobile) {
-      window.scrollTo(0, 0);
-      document.body.style.overflowY = "hidden";
-      document.documentElement.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "visible";
-      document.documentElement.style.overflowY = "visible";
-    }
+    window.addEventListener("scroll", stopScroll);
+
+    return () => {
+      window.removeEventListener("scroll", stopScroll);
+    };
   }, [navStateValue.open, mobile]);
+
+  const stopScroll = () => {
+    if (mobile && navStateValue.open) {
+      window.scrollTo(0, 0);
+    }
+  };
 
   const handleClickLink = () => {
     handlePlayClick();
