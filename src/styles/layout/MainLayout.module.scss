@@ -5,6 +5,32 @@
   padding: 0 8rem;
   margin: 0 auto;
 }
+.cursor {
+  opacity: 0;
+  width: 5rem;
+  height: 5rem;
+  background: transparent;
+  border: 1px solid var(--secondary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  border-radius: 50%;
+
+  &_inner {
+    z-index: 100;
+    pointer-events: none;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: var(--secondary);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
 .links {
   position: fixed;
   left: 0;

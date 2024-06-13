@@ -5,6 +5,7 @@ import styles from "@/styles/layout/MainLayout.module.scss";
 import Providers from "@/providers/Providers";
 import Navbar from "@/components/navbar/desktop/Navbar";
 import Links from "@/components/layout/Links";
+import Cursor from "@/components/layout/Cursor";
 
 const quicksand = Quicksand({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             <Links />
+            <Cursor />
             {children}
           </Providers>
         </main>
