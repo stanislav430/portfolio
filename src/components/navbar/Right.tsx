@@ -4,10 +4,12 @@ import React, { useEffect } from "react";
 import { Variants, motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { Link } from "react-scroll";
+import { useRecoilState, useRecoilValue } from "recoil";
+import useSound from "use-sound";
 import { navState } from "@/atoms/NavAtom";
+import { soundState } from "@/atoms/SoundAtom";
 import styles from "@/styles/components/Navbar.module.scss";
 import ThemeToggler from "./ThemeToggler";
-import { useRecoilState } from "recoil";
 
 type RightProps = {
   mobile: boolean;
@@ -39,6 +41,8 @@ const itemVariants: Variants = {
 
 const Right: React.FC<RightProps> = ({ mobile }) => {
   const [navStateValue, setNavState] = useRecoilState(navState);
+  const { soundActive } = useRecoilValue(soundState);
+  const [playClick] = useSound("/sounds/box-click.wav", { volume: 0.5 });
 
   //stop scrolling
   useEffect(() => {
@@ -52,6 +56,17 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
     }
   }, [navStateValue.open, mobile]);
 
+  const handleClickLink = () => {
+    handlePlayClick();
+    setNavState((prev) => ({ ...prev, open: false }));
+  };
+
+  const handlePlayClick = () => {
+    if (soundActive) {
+      playClick();
+    }
+  };
+
   return (
     <>
       <motion.ul
@@ -64,7 +79,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           className={styles.navbar_right_list_item}
         >
           <Link
-            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            onClick={handleClickLink}
             to="about"
             smooth={true}
             duration={600}
@@ -78,7 +93,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           className={styles.navbar_right_list_item}
         >
           <Link
-            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            onClick={handleClickLink}
             to="skills"
             smooth={true}
             duration={600}
@@ -92,7 +107,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           className={styles.navbar_right_list_item}
         >
           <Link
-            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            onClick={handleClickLink}
             to="projects"
             smooth={true}
             duration={600}
@@ -106,7 +121,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           className={styles.navbar_right_list_item}
         >
           <Link
-            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            onClick={handleClickLink}
             to="contact"
             smooth={true}
             duration={600}
@@ -120,7 +135,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
           className={styles.navbar_right_list_item}
         >
           <Link
-            onClick={() => setNavState((prev) => ({ ...prev, open: false }))}
+            onClick={handleClickLink}
             to="link"
             smooth={true}
             duration={600}
@@ -145,6 +160,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
               href="https://github.com/stanislav430"
               target="_blank"
               aria-label="github"
+              onClick={handlePlayClick}
             >
               <Icon icon="mdi:github" />
             </a>
@@ -153,6 +169,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
               href="https://www.linkedin.com/in/stanislav-danyliuk-stas/"
               target="_blank"
               aria-label="linkedin"
+              onClick={handlePlayClick}
             >
               <Icon icon="mdi:linkedin" />
             </a>
@@ -161,6 +178,7 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
               href="mailto:danyliukstas1@gmail.com"
               target="_blank"
               aria-label="email"
+              onClick={handlePlayClick}
             >
               <Icon icon="mi:email" />
             </a>

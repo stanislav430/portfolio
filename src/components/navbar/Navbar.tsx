@@ -2,10 +2,12 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import useSound from "use-sound";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styles from "@/styles/components/Navbar.module.scss";
 import { navState } from "@/atoms/NavAtom";
+import { soundState } from "@/atoms/SoundAtom";
 import Right from "./Right";
-import { useRecoilState } from "recoil";
 
 const animationDuration = 1.5;
 const circleVariants = {
@@ -64,6 +66,8 @@ const clipVariants = {
 };
 
 const Navbar: React.FC = () => {
+  const { soundActive } = useRecoilValue(soundState);
+  const [playClick] = useSound("/sounds/box-click.wav", { volume: 0.5 });
   const containerRef = useRef<HTMLDivElement>(null);
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [mobile, setMobile] = useState<boolean>(false);
@@ -106,6 +110,13 @@ const Navbar: React.FC = () => {
     containerRef.current.remove();
   };
 
+  const handleClickToggle = () => {
+    if (soundActive) {
+      playClick();
+    }
+    setNavState((prev) => ({ ...prev, open: !prev.open }));
+  };
+
   return (
     <nav className={styles.navbar}>
       <motion.div
@@ -139,7 +150,7 @@ const Navbar: React.FC = () => {
           <Right mobile={mobile} />
         </div>
         <div
-          onClick={() => setNavState((prev) => ({ ...prev, open: !prev.open }))}
+          onClick={handleClickToggle}
           className={`${styles.navbar_toggle} ${
             navStateValue.open ? styles.navbar_toggle_active : ""
           }`}

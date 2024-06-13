@@ -2,6 +2,9 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+import { useRecoilValue } from "recoil";
+import useSound from "use-sound";
+import { soundState } from "@/atoms/SoundAtom";
 import styles from "@/styles/layout/MainLayout.module.scss";
 
 const containerVariants = {
@@ -48,6 +51,15 @@ const lineVariants = {
 };
 
 const Links: React.FC = () => {
+  const { soundActive } = useRecoilValue(soundState);
+  const [playClick] = useSound("/sounds/box-click.wav", { volume: 0.5 });
+
+  const handlePlay = () => {
+    if (soundActive) {
+      playClick();
+    }
+  };
+
   return (
     <motion.div
       variants={containerVariants}
@@ -61,6 +73,7 @@ const Links: React.FC = () => {
         href="mailto:danyliukstas1@gmail.com"
         target="_blank"
         aria-label="email"
+        onClick={handlePlay}
       >
         <Icon className={styles.links_link_icon} icon="mi:email" />
       </motion.a>
@@ -70,6 +83,7 @@ const Links: React.FC = () => {
         href="https://www.linkedin.com/in/stanislav-danyliuk-stas/"
         target="_blank"
         aria-label="linkedin"
+        onClick={handlePlay}
       >
         <Icon className={styles.links_link_icon} icon="mdi:linkedin" />
       </motion.a>
@@ -79,6 +93,7 @@ const Links: React.FC = () => {
         href="https://github.com/stanislav430"
         target="_blank"
         aria-label="github"
+        onClick={handlePlay}
       >
         <Icon className={styles.links_link_icon} icon="mdi:github" />
       </motion.a>
