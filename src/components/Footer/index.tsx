@@ -42,6 +42,7 @@ const Footer: React.FC = () => {
           onClick={handlePlaySound}
           to="hero"
           href="hero"
+          aria-label="hero"
           smooth={true}
           duration={600}
           offset={-100}
