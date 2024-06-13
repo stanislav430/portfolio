@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Quicksand } from "next/font/google";
+import "@/styles/globals.scss";
+import styles from "@/styles/layout/MainLayout.module.scss";
 
-const inter = Inter({ subsets: ["latin"] });
+const quicksand = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title>Stanislav Danyliuk - Frontend Developer | Responsive Design | React | Vue | React Native - Top-notch Developer from Kyiv, Ukraine</title>
+        <meta
+          name="description"
+          content="Frontend Developer proficient in React, Next.js, Tailwind CSS, Styled Components, Git, and responsive design. Explore my portfolio showcasing dynamic, user-friendly web applications."
+        />
+      </head>
+      <body className={quicksand.className}>
+        <main className={styles.layout}>{children}</main>
+      </body>
     </html>
   );
 }
