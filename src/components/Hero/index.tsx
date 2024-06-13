@@ -234,6 +234,7 @@ const Hero: React.FC = () => {
               className={styles.hero_right_container_imgContainer_image}
               src={heroData.img}
               alt="Stanislav Danyliuk"
+              priority
             />
           </motion.div>
           <motion.div
