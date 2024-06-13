@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 import { heroData } from "@/db/main";
 import styles from "@/styles/components/Hero.module.scss";
 import UI from "@/styles/components/UI.module.scss";
@@ -109,6 +110,32 @@ const textChildrenVariants = {
     },
   },
 };
+const arrowVariants = {
+  start: {
+    y: 0,
+  },
+  end: {
+    y: [-5, 5, -5],
+    transition: {
+      y: {
+        repeat: Infinity,
+        duration: 2,
+        ease: "easeInOut",
+      },
+    },
+  },
+};
+const scrollVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: delayTime,
+    },
+  },
+};
 
 const Hero: React.FC = () => {
   return (
@@ -196,6 +223,28 @@ const Hero: React.FC = () => {
           />
         </motion.div>
       </div>
+      <motion.div
+        variants={scrollVariants}
+        initial="hidden"
+        animate="visible"
+        className={styles.hero_scroll}
+      >
+        <Icon
+          className={styles.hero_scroll_mouse}
+          icon="iconamoon:mouse-thin"
+        />
+        <motion.div
+          variants={arrowVariants}
+          initial="start"
+          animate="end"
+          className={styles.hero_scroll_arrow}
+        >
+          <Icon
+            className={styles.hero_scroll_arrow_svg}
+            icon="ph:caret-double-down-thin"
+          />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

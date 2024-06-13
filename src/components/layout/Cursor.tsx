@@ -5,7 +5,7 @@ import styles from "@/styles/layout/MainLayout.module.scss";
 
 const Cursor: React.FC = () => {
   const [isClicked, setIsClicked] = useState<Boolean>(false);
-  const [show, setShow] = useState<Boolean>(false);
+  const [show, setShow] = useState<Boolean>(true);
   const cursorX = useMotionValue<Number>(0);
   const cursorY = useMotionValue<Number>(0);
   const cursorRef = useRef<HTMLDivElement>(null);
