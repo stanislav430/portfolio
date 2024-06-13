@@ -140,13 +140,28 @@ const Right: React.FC<RightProps> = ({ mobile }) => {
         <div className={styles.navbar_right_links}>
           <div className={styles.navbar_right_links_line}></div>
           <div className={styles.navbar_right_links_container}>
-            <a className={styles.navbar_right_links_container_link} href="">
+            <a
+              className={styles.navbar_right_links_container_link}
+              href="https://github.com/stanislav430"
+              target="_blank"
+              aria-label="github"
+            >
               <Icon icon="mdi:github" />
             </a>
-            <a className={styles.navbar_right_links_container_link} href="">
+            <a
+              className={styles.navbar_right_links_container_link}
+              href="https://www.linkedin.com/in/stanislav-danyliuk-stas/"
+              target="_blank"
+              aria-label="linkedin"
+            >
               <Icon icon="mdi:linkedin" />
             </a>
-            <a className={styles.navbar_right_links_container_link} href="">
+            <a
+              className={styles.navbar_right_links_container_link}
+              href="mailto:danyliukstas1@gmail.com"
+              target="_blank"
+              aria-label="email"
+            >
               <Icon icon="mi:email" />
             </a>
           </div>
