@@ -49,6 +49,7 @@ const About: React.FC = () => {
           </motion.div>
         ))}
       </motion.div>
+      <div className={styles.about_circle1}></div>
     </section>
   );
 };

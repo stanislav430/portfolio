@@ -247,9 +247,14 @@ const Hero: React.FC = () => {
         initial="hidden"
         animate="visible"
         className={styles.hero_scroll}
-        onClick={handleClickScrollDown}
       >
-        <Link to="about" smooth={true} duration={600} offset={400}>
+        <Link
+          onClick={handleClickScrollDown}
+          to="about"
+          smooth={true}
+          duration={600}
+          offset={10}
+        >
           <Icon
             className={styles.hero_scroll_mouse}
             icon="iconamoon:mouse-thin"
