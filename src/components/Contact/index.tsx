@@ -71,9 +71,10 @@ const Contact: React.FC = () => {
       <motion.div className={styles.contact_links}>
         {contactData.links.map((link, i) => (
           <motion.a
+            key={i}
             className={styles.contact_links_link}
             href={link.url}
-            key={i}
+            target="_blank"
             variants={linkVariants}
             whileHover={{ color: "var(--secondary)" }}
           >

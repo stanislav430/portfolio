@@ -1,4 +1,5 @@
 import profileImage from "../../public/images/stanislav.png";
+import redditCloneImg from "../../public/images/projects/reddit-clone.png"
 
 export const heroData = {
   img: profileImage,
@@ -107,6 +108,28 @@ export const contactData = {
     {
       label: "Resume",
       url: "#",
+    },
+  ],
+};
+
+export const projectsData = {
+  title: "Projects",
+  Projects: [
+    {
+      name: "Reddit Clone",
+      image: redditCloneImg,
+      technologies: [
+        "TypeScript",
+        "React",
+        "Next",
+        "Recoil",
+        "Styled-Components",
+        "Firebase",
+      ],
+      description:
+        "A fully functional Reddit clone built with the latest technology in the web development field, allowing users to create communities, as well as create, post, and upvote content, comment on and vote on other users' content.",
+      demoUrl: "https://reddit-clone.vercel.app/",
+      codeUrl: "https://github.com/stanislav430/reddit-clone",
     },
   ],
 };
